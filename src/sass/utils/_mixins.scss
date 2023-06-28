@@ -1,0 +1,7 @@
+@use "../base/" as b;
+
+@mixin fonts($size) {
+  font-family: b.$primary-font;
+  font-size: $size;
+  color: #2c3e50;
+}
