@@ -1,3 +1,9 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .features {
   display: flex;
   flex-direction: column;
@@ -70,6 +76,48 @@
     font-size: 1.2rem;
   }
 }
+.signIn {
+  box-sizing: border-box;
+  background-color: white;
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 3rem;
+  padding: 2rem;
+}
+.signIn__icon {
+  font-size: 5rem;
+}
+.signIn__wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.signIn__wrapper label {
+  font-weight: bold;
+}
+.signIn__wrapper input {
+  padding: 5px;
+  font-size: 1.2rem;
+}
+.signIn__remember {
+  display: flex;
+}
+.signIn__remember label {
+  margin-left: 0.25rem;
+}
+.signIn__button {
+  display: block;
+  width: 93.5%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: white;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -106,6 +154,27 @@
 .footer__text {
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.bg-dark {
+  background-color: #12002b;
 }
 
 body {

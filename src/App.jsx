@@ -4,9 +4,7 @@ import RouteFile from "./router/router";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <RouteFile />
-      </div>
+      <RouteFile />
     </BrowserRouter>
   );
 }
