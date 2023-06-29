@@ -1,4 +1,4 @@
-import "../../sass/layouts/_hero.scss";
+import "../../../sass/components/_hero.scss";
 
 const Hero = () => {
   return (
