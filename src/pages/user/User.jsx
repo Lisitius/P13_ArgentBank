@@ -1,18 +1,18 @@
+import React from "react";
+import Account from "../../components/User/Account";
 import Footer from "../../layouts/Footer/Footer";
 import Header from "../../layouts/Header/Header";
-import Login from "../../components/SignIn/Login/Login";
-import "../../sass/pages/_signin.scss";
 
-const SignIn = () => {
+const User = () => {
   return (
     <>
       <Header />
       <main className="main bg-dark">
-        <Login />
+        <Account />
       </main>
       <Footer />
     </>
   );
 };
 
-export default SignIn;
+export default User;
