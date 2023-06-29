@@ -1,4 +1,4 @@
-import "../../sass/components/_login.scss";
+import "../../../sass/components/_login.scss";
 
 const Login = () => {
   return (
@@ -18,7 +18,8 @@ const Login = () => {
           <label htmlFor="remember-me">Remember me</label>
           <input type="checkbox" id="remember-me" />
         </div>
-        <a href="#" className="signIn__button">
+        {/* eslint-disable-next-line */}
+        <a href="/user" className="signIn__button">
           Sign In
         </a>
       </form>
