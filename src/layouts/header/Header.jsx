@@ -1,8 +1,18 @@
 import "../../sass/layouts/_header.scss";
 import { NavLink } from "react-router-dom";
 import logoArgentBank from "../../assets/argentBankLogo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/features/authSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth.currentUser);
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+  };
+
   return (
     <header>
       <nav className="nav">
@@ -14,10 +24,19 @@ const Header = () => {
           />
         </NavLink>
         <div>
-          <NavLink className="nav__item" to="/signin">
-            <i className="fa fa-user-circle nav__item--icon"></i>
-            Sign In
-          </NavLink>
+          {currentUser ? (
+            <NavLink className="nav__item" to="/signin" onClick={handleLogout}>
+              <i className="fa fa-user-circle nav__item--icon"></i>
+              Tony
+              <i className="fa-solid fa-arrow-right-from-bracket nav__item--icon"></i>
+              SignOut
+            </NavLink>
+          ) : (
+            <NavLink className="nav__item" to="/signin">
+              <i className="fa fa-user-circle nav__item--icon"></i>
+              SignIn
+            </NavLink>
+          )}
         </div>
       </nav>
     </header>

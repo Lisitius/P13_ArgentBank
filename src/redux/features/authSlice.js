@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
-  currentUser: null,
+  currentUser: JSON.parse(localStorage.getItem("currentUser")) || null,
   status: "idle",
   error: null,
 };
@@ -26,9 +26,16 @@ export const login = createAsyncThunk(
 
     const data = await response.json();
 
+    localStorage.setItem("currentUser", JSON.stringify(data));
+
     return data;
   }
 );
+
+export const logout = createAsyncThunk("auth/logout", async () => {
+  localStorage.removeItem("currentUser");
+  return null;
+});
 
 const authSlice = createSlice({
   name: "auth",
@@ -46,6 +53,10 @@ const authSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.status = "idle";
+        state.currentUser = null;
       });
   },
 });
