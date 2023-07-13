@@ -1,5 +1,5 @@
 import "../../../sass/components/_login.scss";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../../redux/features/authSlice";
 import { useNavigate } from "react-router-dom";
@@ -7,31 +7,15 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [remember, setRemember] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    const rememberData = JSON.parse(localStorage.getItem("remember"));
-    if (rememberData) {
-      setEmail(rememberData.email);
-      setRemember(rememberData.remember);
-    }
-  }, []);
+  const [rememberMe, setRememberMe] = useState(false); // nouvel état pour "Se souvenir de moi"
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login({ email, password }))
+    dispatch(login({ email, password, rememberMe }))
       .unwrap()
-      .then(() => {
-        if (remember) {
-          localStorage.setItem("remember", JSON.stringify({ email, remember }));
-        } else {
-          localStorage.removeItem("remember");
-        }
-        navigate("/user");
-      })
+      .then(() => navigate("/user"))
       .catch((err) => console.error(err));
   };
 
@@ -45,7 +29,6 @@ const Login = () => {
           <input
             type="text"
             id="username"
-            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -58,12 +41,11 @@ const Login = () => {
           />
         </div>
         <div className="signIn__remember">
-          <label htmlFor="remember-me">Remember me</label>
+          <label htmlFor="remember-me">Se souvenir de moi</label>
           <input
             type="checkbox"
             id="remember-me"
-            checked={remember}
-            onChange={(e) => setRemember(e.target.checked)}
+            onChange={(e) => setRememberMe(e.target.checked)}
           />
         </div>
         <button className="signIn__button" type="submit">
