@@ -7,6 +7,7 @@ import { logout } from "../../redux/features/authSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth.currentUser);
+  const userProfile = useSelector((state) => state.user.profile);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -27,7 +28,7 @@ const Header = () => {
           {currentUser ? (
             <NavLink className="nav__item" to="/signin" onClick={handleLogout}>
               <i className="fa fa-user-circle nav__item--icon"></i>
-              Tony
+              {userProfile && userProfile.firstName}
               <i className="fa-solid fa-arrow-right-from-bracket nav__item--icon"></i>
               SignOut
             </NavLink>

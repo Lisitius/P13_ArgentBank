@@ -1,13 +1,17 @@
 import "../../sass/components/_account.scss";
+import { useSelector } from "react-redux";
 
 const Account = () => {
+  const userProfile = useSelector((state) => state.user.profile);
+
   return (
     <>
       <div className="name">
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {userProfile && userProfile.firstName}{" "}
+          {userProfile && userProfile.lastName}
         </h1>
         <button className="name__button">Edit Name</button>
       </div>
