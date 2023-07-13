@@ -1,19 +1,63 @@
 import "../../sass/components/_account.scss";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUserProfile } from "../../redux/features/userSlice";
 
 const Account = () => {
   const userProfile = useSelector((state) => state.user.profile);
+  const token = useSelector((state) =>
+    state.auth.currentUser ? state.auth.currentUser.body.token : null
+  );
+  const [editMode, setEditMode] = useState(false);
+  const [firstName, setFirstName] = useState(
+    userProfile ? userProfile.firstName : ""
+  );
+  const [lastName, setLastName] = useState(
+    userProfile ? userProfile.lastName : ""
+  );
+  const dispatch = useDispatch();
+
+  const handleEditClick = () => {
+    setEditMode(true);
+  };
+
+  const handleSaveClick = () => {
+    dispatch(updateUserProfile({ token, firstName, lastName }));
+    setEditMode(false);
+  };
 
   return (
     <>
       <div className="name">
-        <h1>
-          Welcome back
-          <br />
-          {userProfile && userProfile.firstName}{" "}
-          {userProfile && userProfile.lastName}
-        </h1>
-        <button className="name__button">Edit Name</button>
+        {editMode ? (
+          <>
+            <h1>
+              <input
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+              <input
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </h1>
+            <button className="name__button" onClick={handleSaveClick}>
+              Save Name
+            </button>
+          </>
+        ) : (
+          <>
+            <h1>
+              Welcome back
+              <br />
+              {userProfile && userProfile.firstName}{" "}
+              {userProfile && userProfile.lastName}{" "}
+            </h1>
+            <button className="name__button" onClick={handleEditClick}>
+              Edit Name
+            </button>
+          </>
+        )}
       </div>
       {/* account 1 */}
       <section className="account">
