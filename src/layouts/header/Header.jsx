@@ -26,12 +26,20 @@ const Header = () => {
         </NavLink>
         <div>
           {currentUser ? (
-            <NavLink className="nav__item" to="/signin" onClick={handleLogout}>
-              <i className="fa fa-user-circle nav__item--icon"></i>
-              {userProfile && userProfile.firstName}
-              <i className="fa-solid fa-arrow-right-from-bracket nav__item--icon"></i>
-              SignOut
-            </NavLink>
+            <>
+              <NavLink className="nav__item user" to="/user">
+                <i className="fa fa-user-circle nav__item--icon"></i>
+                {userProfile && userProfile.firstName}
+              </NavLink>
+              <NavLink
+                className="nav__item"
+                to="/signin"
+                onClick={handleLogout}
+              >
+                <i className="fa-solid fa-arrow-right-from-bracket nav__item--icon"></i>
+                SignOut
+              </NavLink>
+            </>
           ) : (
             <NavLink className="nav__item" to="/signin">
               <i className="fa fa-user-circle nav__item--icon"></i>
