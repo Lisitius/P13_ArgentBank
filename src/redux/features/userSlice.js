@@ -1,4 +1,10 @@
+import { logout } from "./authSlice";
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+const initialState = {
+  profile: JSON.parse(localStorage.getItem("userProfile")) || null,
+};
 
 export const fetchUserProfile = createAsyncThunk(
   "user/fetchUserProfile",
@@ -44,15 +50,19 @@ export const updateUserProfile = createAsyncThunk(
 
 const userSlice = createSlice({
   name: "user",
-  initialState: { profile: null },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchUserProfile.fulfilled, (state, action) => {
-      console.log(action.payload.body);
       state.profile = action.payload.body;
+      localStorage.setItem("userProfile", JSON.stringify(action.payload.body));
     });
     builder.addCase(updateUserProfile.fulfilled, (state, action) => {
       state.profile = action.payload.body;
+      localStorage.setItem("userProfile", JSON.stringify(action.payload.body));
+    });
+    builder.addCase(logout.fulfilled, (state) => {
+      state.profile = null;
     });
   },
 });
