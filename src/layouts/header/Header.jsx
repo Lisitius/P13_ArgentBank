@@ -36,7 +36,7 @@ const Header = () => {
                 to="/signin"
                 onClick={handleLogout}
               >
-                <i className="fa-solid fa-arrow-right-from-bracket nav__item--icon"></i>
+                <i className="fa fa-sign-out nav__item--icon"></i>
                 SignOut
               </NavLink>
             </>

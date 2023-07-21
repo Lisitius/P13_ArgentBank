@@ -32,6 +32,8 @@ const Account = () => {
         {editMode ? (
           <>
             <h1>
+              Welcome back
+              <br />
               <input
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}

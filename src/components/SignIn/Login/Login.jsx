@@ -41,12 +41,12 @@ const Login = () => {
           />
         </div>
         <div className="signIn__remember">
-          <label htmlFor="remember-me">Se souvenir de moi</label>
           <input
             type="checkbox"
             id="remember-me"
             onChange={(e) => setRememberMe(e.target.checked)}
           />
+          <label htmlFor="remember-me">Remember me</label>
         </div>
         <button className="signIn__button" type="submit">
           Sign In
