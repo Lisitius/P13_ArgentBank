@@ -1,5 +1,5 @@
 import Footer from "../../layouts/Footer/Footer";
-import Header from "../../layouts/Header/Header";
+import Header from "../../layouts/header/Header";
 import Login from "../../components/SignIn/Login/Login";
 import "../../sass/pages/_signin.scss";
 

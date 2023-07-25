@@ -4,7 +4,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 20px;
+  padding: 0 20px;
+
+  &__login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &__main {
     display: flex;
@@ -24,7 +30,7 @@
       text-decoration: underline;
     }
     &--icon {
-      margin-right: 2px;
+      margin-right: 5px;
       margin-left: 5px;
       font-size: 18px;
     }
