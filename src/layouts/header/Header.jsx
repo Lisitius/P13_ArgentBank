@@ -24,7 +24,7 @@ const Header = () => {
             alt="Logo Argent Bank"
           />
         </NavLink>
-        <div>
+        <div className="login">
           {currentUser ? (
             <>
               <NavLink className="nav__item user" to="/user">

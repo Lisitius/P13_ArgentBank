@@ -141,16 +141,16 @@ paths:
         "200":
           description: User transaction retrieved successully
           schema:
-            $ref: "#definitions/Transactions"
+            $ref: "#/definitions/Transactions"
         "400":
           description: Invalid fields
         "500":
           description: Internal Server Error
-  # TRANSACTION (ID) /////////////////////////////////////////////////////////////
-  /user/transaction/{ID}:
+  # TRANSACTION (transactionId) /////////////////////////////////////////////////////////////
+  /user/transactions/{transactionId}:
     parameters:
       - in: path
-        name: Transaction ID
+        name: transactionId
         required: true
         type: integer
         description: The ID of transaction selected
@@ -168,7 +168,7 @@ paths:
           type: string
           required: true
         - in: path
-          name: transaction ID
+          name: transactionId
           required: true
           type: integer
           description: Transaction ID chosen by the user
@@ -197,7 +197,7 @@ paths:
           type: string
           required: true
         - in: path
-          name: transaction ID
+          name: transactionId
           required: true
           type: integer
           description: Transaction ID chosen by the user
@@ -205,7 +205,7 @@ paths:
           name: body
           required: true
           schema:
-            $ref: "#/defitions/UpdateTransaction"
+            $ref: "#/definitions/UpdateTransaction"
       produces:
         - application/json
       responses:
@@ -213,33 +213,6 @@ paths:
           description: User transaction modfication successfully
           schema:
             $ref: "#/definitions/SpecificTransactions"
-        "400":
-          description: Invalid Fields
-        "500":
-          description: Internal Server Error
-    delete:
-      security:
-        - Bearer: []
-      tags:
-        - Transactions
-      summary: Delete a transation with transaction ID
-      description: API Endpoint to delete a transaction
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          type: string
-          required: true
-        - in: path
-          name: transaction ID
-          required: true
-          type: integer
-          description: Transaction ID chosen by the user
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Transaction deleted
         "400":
           description: Invalid Fields
         "500":

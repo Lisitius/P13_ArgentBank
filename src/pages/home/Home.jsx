@@ -1,5 +1,5 @@
 import "../../sass/pages/_home.scss";
-import Header from "../../layouts/Header/Header";
+import Header from "../../layouts/header/Header";
 import Hero from "../../components/Home/Hero/Hero";
 import Features from "../../components/Home/Features/Features";
 import Footer from "../../layouts/Footer/Footer";
