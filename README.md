@@ -11,7 +11,7 @@ Git : https://git-scm.com/
 ### Dependencies
 
 ![React](https://img.shields.io/badge/React-18.2.0-lightblue)
-![React Router](https://img.shields.io/badge/React--router--dom-6.11.1-red)
+![React Router](https://img.shields.io/badge/React--router--dom-6.14.0-red)
 ![Redux](https://img.shields.io/badge/Redux-8.1.1-blue)
 ![Redux/toolkit](https://img.shields.io/badge/Redux/toolkit-1.9.5-navy)
 ![Sass](https://img.shields.io/badge/Sass-1.63.6-pink)
