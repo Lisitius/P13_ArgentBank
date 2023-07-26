@@ -11,10 +11,10 @@ Git : https://git-scm.com/
 ### Dependencies
 
 ![React](https://img.shields.io/badge/React-18.2.0-lightblue)
-![React Router](https://img.shields.io/badge/React--router--dom-6.11.1-red)
+![React Router](https://img.shields.io/badge/React--router--dom-6.14.0-red)
 ![Redux](https://img.shields.io/badge/Redux-8.1.1-blue)
 ![Redux/toolkit](https://img.shields.io/badge/Redux/toolkit-1.9.5-navy)
-![Sass](https://img.shields.io/badge/Sass-1.62.1-pink)
+![Sass](https://img.shields.io/badge/Sass-1.63.6-pink)
 
 ### Installation
 
@@ -45,3 +45,11 @@ Launch :
 npm start
 Launch on 3000
 ```
+
+#### Phase 2 : Endpoint and Swagger
+
+Specify the API endpoints needed for a possible second mission once we have completed the first.
+
+##### Instructions :
+
+Import the swagger.yaml file on the site: https://editor.swagger.io/
