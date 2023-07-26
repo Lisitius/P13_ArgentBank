@@ -45,3 +45,11 @@ Launch :
 npm start
 Launch on 3000
 ```
+
+#### Phase 2 : Endpoint and Swagger
+
+Specify the API endpoints needed for a possible second mission once we have completed the first.
+
+##### Instructions :
+
+Import the swagger.yaml file on the site: https://editor.swagger.io/
