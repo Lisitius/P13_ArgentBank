@@ -9,6 +9,7 @@ const routeFile = () => {
       <Route path="/" element={<Home />}></Route>
       <Route path="/signin" element={<SignIn />}></Route>
       <Route path="/user" element={<User />}></Route>
+      <Route path="*" element={<Home />}></Route>
     </Routes>
   );
 };
