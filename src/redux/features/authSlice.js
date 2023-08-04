@@ -63,6 +63,7 @@ const authSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(logout.fulfilled, (state) => {
+        // On logout, clear currentUser
         state.currentUser = null;
       });
   },
