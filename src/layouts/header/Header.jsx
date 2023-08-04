@@ -2,16 +2,19 @@ import "../../sass/layouts/_header.scss";
 import { NavLink } from "react-router-dom";
 import logoArgentBank from "../../assets/argentBankLogo.png";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/features/authSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const currentUser = useSelector((state) => state.auth.currentUser);
   const userProfile = useSelector((state) => state.user.profile);
 
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    navigate("/signin");
   };
 
   return (
