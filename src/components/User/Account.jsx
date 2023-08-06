@@ -1,9 +1,17 @@
 import "../../sass/components/_account.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUserProfile } from "../../redux/features/userSlice";
+import {
+  fetchUserProfile,
+  updateUserProfile,
+} from "../../redux/features/userSlice";
 
 const Account = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const currentUser = useSelector((state) => state.auth.currentUser);
+
   const userProfile = useSelector((state) => state.user.profile);
   const token = useSelector((state) =>
     state.auth.currentUser ? state.auth.currentUser.body.token : null
@@ -15,7 +23,14 @@ const Account = () => {
   const [lastName, setLastName] = useState(
     userProfile ? userProfile.lastName : ""
   );
-  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(fetchUserProfile(currentUser.body.token));
+    } else {
+      navigate("/signin");
+    }
+  }, [currentUser, dispatch, navigate]);
 
   const handleEditClick = () => {
     setEditMode(true);
