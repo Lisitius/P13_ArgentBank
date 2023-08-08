@@ -10,13 +10,17 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(login({ email, password, rememberMe }))
       .unwrap()
       .then(() => navigate("/user"))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setError("Erreur de connexion. Veuillez vérifiez vos informations");
+        console.error(err);
+      });
   };
 
   return (
@@ -27,7 +31,7 @@ const Login = () => {
         <div className="signIn__wrapper">
           <label htmlFor="username">Username</label>
           <input
-            type="text"
+            type="email"
             id="username"
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -40,6 +44,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        {error && <p className="error-message">{error}</p>}
         <div className="signIn__remember">
           <input
             type="checkbox"
