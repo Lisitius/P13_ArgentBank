@@ -23,6 +23,7 @@ const Account = () => {
   const [lastName, setLastName] = useState(
     userProfile ? userProfile.lastName : ""
   );
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     if (currentUser) {
@@ -37,8 +38,15 @@ const Account = () => {
   };
 
   const handleSaveClick = () => {
+    if (firstName.length < 2 || lastName.length < 2) {
+      setErrorMessage(
+        "Les prénom et nom doivent comporter au moins 2 caractères chacun."
+      );
+      return;
+    }
     dispatch(updateUserProfile({ token, firstName, lastName }));
     setEditMode(false);
+    setErrorMessage("");
   };
 
   return (
@@ -58,6 +66,7 @@ const Account = () => {
                 onChange={(e) => setLastName(e.target.value)}
               />
             </h1>
+            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
             <button className="name__button" onClick={handleSaveClick}>
               Save Name
             </button>
