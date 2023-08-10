@@ -61,7 +61,7 @@ paths:
           description: Internal Server Error
   # USER (Profile) /////////////////////////////////////////////////////////////
   /user/profile:
-    post:
+    get:
       security:
         - Bearer: []
       tags:
@@ -144,6 +144,10 @@ paths:
             $ref: "#/definitions/Transactions"
         "400":
           description: Invalid fields
+        "401":
+          description: Unauthorized - Invalid authentication
+        "403":
+          description: Forbidden - Access forbidden
         "500":
           description: Internal Server Error
   # TRANSACTION (transactionId) /////////////////////////////////////////////////////////////
@@ -181,9 +185,13 @@ paths:
             $ref: "#/definitions/SpecificTransactions"
         "400":
           description: Invalid Fields
+        "401":
+          description: Unauthorized - Invalid authentication
+        "403":
+          description: Forbidden - Access forbidden
         "500":
           description: Internal Server Error
-    put:
+    patch:
       security:
         - Bearer: []
       tags:
@@ -215,6 +223,10 @@ paths:
             $ref: "#/definitions/SpecificTransactions"
         "400":
           description: Invalid Fields
+        "401":
+          description: Unauthorized - Invalid authentication
+        "403":
+          description: Forbidden - Access forbidden
         "500":
           description: Internal Server Error
 securityDefinitions:
@@ -278,44 +290,42 @@ definitions:
       message:
         type: string
       body:
-        type: array
-        items:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Transaction id
-              example: 18
-            date:
-              type: string
-              format: date-time
-              description: Transaction date and date-time
-              example: "2023-28-25T11:08:55.788F"
-            description:
-              type: string
-              description: Transaction description
-              example: Telephone bill
-            amount:
-              type: integer
-              format: int32
-              description: Transaction amount
-              example: 70
-            balance:
-              type: string
-              description: Account balance
-              example: 140 000
-            type:
-              type: string
-              description: Transaction type
-              example: Telephone Bill
-            category:
-              type: string
-              description: Transaction category
-              example: Bill
-            notes:
-              type: string
-              description: Transaction personnal notes
-              example: monthly telephone bill
+        type: object
+        properties:
+          id:
+            type: string
+            description: Transaction id
+            example: 18
+          date:
+            type: string
+            format: date-time
+            description: Transaction date and date-time
+            example: "2023-28-25T11:08:55.788F"
+          description:
+            type: string
+            description: Transaction description
+            example: Telephone bill
+          amount:
+            type: integer
+            format: int32
+            description: Transaction amount
+            example: 70
+          balance:
+            type: string
+            description: Account balance
+            example: 140 000
+          type:
+            type: string
+            description: Transaction type
+            example: Telephone Bill
+          category:
+            type: string
+            description: Transaction category
+            example: Bill
+          notes:
+            type: string
+            description: Transaction personnal notes
+            example: monthly telephone bill
   SpecificTransactions:
     properties:
       status:
@@ -323,44 +333,42 @@ definitions:
       message:
         type: string
       body:
-        type: array
-        items:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Transaction id
-              example: 40
-            date:
-              type: string
-              format: date-time
-              description: Transaction date and date-time
-              example: "2023-28-25T11:08:55.788F"
-            description:
-              type: string
-              description: Transaction description
-              example: Restaurant Le Maroille
-            amount:
-              type: integer
-              format: int32
-              description: Transaction amount
-              example: 140
-            balance:
-              type: string
-              description: Account balance
-              example: 120 000
-            type:
-              type: string
-              description: Transaction type
-              example: Restaurant
-            category:
-              type: string
-              description: Transaction category
-              example: Food
-            notes:
-              type: string
-              description: Transaction personnal notes
-              example: AfterWork restaurant
+        type: object
+        properties:
+          id:
+            type: string
+            description: Transaction id
+            example: 40
+          date:
+            type: string
+            format: date-time
+            description: Transaction date and date-time
+            example: "2023-28-25T11:08:55.788F"
+          description:
+            type: string
+            description: Transaction description
+            example: Restaurant Le Maroille
+          amount:
+            type: integer
+            format: int32
+            description: Transaction amount
+            example: 140
+          balance:
+            type: string
+            description: Account balance
+            example: 120 000
+          type:
+            type: string
+            description: Transaction type
+            example: Restaurant
+          category:
+            type: string
+            description: Transaction category
+            example: Food
+          notes:
+            type: string
+            description: Transaction personnal notes
+            example: AfterWork restaurant
   UpdateTransaction:
     properties:
       category:
